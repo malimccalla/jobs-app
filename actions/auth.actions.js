@@ -17,7 +17,7 @@ export const facebookLogin = () => async dispatch => {
 
 const _doFacebookLogin = async dispatch => {
   let result = await Facebook.logInWithReadPermissionsAsync('1822732088057606', {
-    permissions: ['public_profile', 'email', 'user_friends']
+    permissions: ['public_profile', 'email']
   });
 
   if (result.type === 'cancel') {
