@@ -29,6 +29,7 @@ class Slides extends Component {
           raised
           buttonStyle={styles.buttonStyles}
           textStyle={styles.buttonTextStyles}
+          onPress={this.props.onComplete}
         />
       )
     }
