@@ -1,6 +1,6 @@
 import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
 import AuthScreen from './screens/Auth.screen';
 import WelcomeScreen from './screens/Welcome.screen';
@@ -30,6 +30,7 @@ export default class App extends React.Component {
 
     return (
       <View style={styles.container}>
+        <StatusBar hidden />
         <MainNavigator />
       </View>
     );
