@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, Dimensions, TouchableHighlight } from 'react-native';
+import { Button } from 'react-native-elements';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -12,9 +13,25 @@ class Slides extends Component {
           key={slide.text}
         >
           <Text style={styles.textStyle}>{slide.text}</Text>
+          {this.renderLastSlide(index)}
         </View>
       );
     })
+  }
+
+  renderLastSlide(index) {
+    console.log(index);
+    if (index === this.props.data.length - 1) {
+      console.log('LAST SLIDE!');
+      return (
+        <Button
+          title="Start Trippin'"
+          raised
+          buttonStyle={styles.buttonStyles}
+          textStyle={styles.buttonTextStyles}
+        />
+      )
+    }
   }
 
   renderPageIndicators() {
@@ -68,7 +85,8 @@ const styles = {
   textStyle: {
     fontSize: 30,
     color: '#ffffff',
-    fontWeight: '500'
+    fontWeight: '500',
+    textAlign: 'center'
   },
   pageIndicatorStyles: {
     alignItems: 'center',
@@ -84,6 +102,15 @@ const styles = {
     margin: 4,
     justifyContent: 'space-around',
     alignItems: 'center',
+  },
+  buttonStyles: {
+    backgroundColor: '#ffffff',
+    marginTop: 16,
+    width: 140,
+    borderRadius: 5
+  },
+  buttonTextStyles: {
+    color: '#0089ee'
   }
 }
 
