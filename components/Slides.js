@@ -25,7 +25,7 @@ class Slides extends Component {
       console.log('LAST SLIDE!');
       return (
         <Button
-          title="Start Trippin'"
+          title="Get Started"
           raised
           buttonStyle={styles.buttonStyles}
           textStyle={styles.buttonTextStyles}
@@ -86,7 +86,8 @@ const styles = {
   textStyle: {
     fontSize: 30,
     color: '#ffffff',
-    fontWeight: '500',
+    fontFamily: 'Avenir Next',
+    fontWeight: '600',
     textAlign: 'center'
   },
   pageIndicatorStyles: {

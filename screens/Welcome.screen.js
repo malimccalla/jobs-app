@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import Slides from '../components/Slides';
 
 const SLIDE_DATA = [
-  { slideIndex: 0, text: 'Welcome to job app' },
+  { slideIndex: 0, text: 'Welcome to Shuttle' },
   { slideIndex: 1, text: 'Set your location, then swipe away!' },
   { slideIndex: 2, text: 'Swipe mcSwipe face' },
 ];
