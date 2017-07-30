@@ -6,20 +6,28 @@ import { connect } from 'react-redux';
 class AuthScreen extends Component {
   componentDidMount() {
     this.props.facebookLogin();
-    AsyncStorage.removeItem('fb_token');
+    this.onAuthComplete(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.onAuthComplete(nextProps);
+  }
+
+  onAuthComplete(props) {
+    if (props.token) {
+      this.props.navigation.navigate('map');
+    }
   }
 
   render() {
     return (
-      <View>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-      </View>
+      <View style={{ flex: 1, backgroundColor: '#0089ee' }} />
     );
   }
 }
 
-export default connect(null, actions)(AuthScreen);
+const mapStateToProps = ({ auth }) => {
+  return { token: auth.token };
+};
+
+export default connect(mapStateToProps, actions)(AuthScreen);
