@@ -51,7 +51,8 @@ class MapScreen extends Component {
           region={this.state.region}
           onRegionChangeComplete={this.onRegionChangeComplete}
           provider={MapView.PROVIDER_GOOGLE}
-        />
+        >
+        </MapView>
         <View style={styles.buttonContainer}>
           <Button
             title="Search"

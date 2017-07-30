@@ -5,7 +5,8 @@ import {
   PanResponder,
   Dimensions,
   LayoutAnimation,
-  UIManager
+  UIManager,
+  Platform
 } from 'react-native';
 
 import styles from './Swipe.styles';
@@ -108,7 +109,7 @@ class Swipe extends Component {
       return this.props.renderNoMoreCards();
     }
 
-    return this.props.data.map((item, i) => {
+    const deck = this.props.data.map((item, i) => {
       if (i < this.state.index) {
         return null;
       }
@@ -128,12 +129,14 @@ class Swipe extends Component {
       return (
         <Animated.View
           key={item.id}
-          style={[styles.cardStyle, { top: 10 * (i - this.state.index)}]}
+          style={[styles.cardStyle, { top: 10 * (i - this.state.index), zIndex: -i }]}
         >
           {this.props.renderCard(item)}
         </Animated.View>
       )
-    }).reverse();
+    });
+
+    return Platform.OS === 'andriod' ? deck : deck.reverse();
   }
 
   render() {
