@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, Platform, ScrollView, Linking } from 'react-native';
-import { Button, Card } from 'react-native-elements';
+import { Button, Card, Icon } from 'react-native-elements';
 import { MapView } from 'expo';
 import { connect } from 'react-redux';
 
 class ReviewScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Review Jobs',
+    tabBarIcon: ({ tintColor }) => {
+      return <Icon name="favorite" size={24} color={tintColor} />
+    },
     headerStyle: {
       marginTop: Platform.OS === 'andriod' ? 24 : 0
     },
