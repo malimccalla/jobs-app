@@ -22,6 +22,11 @@ class MapScreen extends Component {
     this.setState({ mapLoaded: true });
   }
 
+  onRegionChangeComplete = (region) => {
+    console.log(region);
+    this.setState({ region });
+  }
+
   render() {
     if (!this.state.mapLoaded) {
       return (
@@ -36,6 +41,8 @@ class MapScreen extends Component {
         <MapView
           style={{ flex: 1 }}
           region={this.state.region}
+          onRegionChangeComplete={this.onRegionChangeComplete}
+          provider={MapView.PROVIDER_GOOGLE}
         />
       </View>
     );
