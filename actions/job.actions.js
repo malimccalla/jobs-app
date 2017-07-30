@@ -3,7 +3,7 @@ import qs from 'qs';
 import reverseGeocode from 'latlng-to-zip';
 import {
   FETCH_JOBS,
-  LIKE_
+  LIKE_JOB
 } from './types';
 
 const JOB_URL = 'http://api.indeed.com/ads/apisearch?';
