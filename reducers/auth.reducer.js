@@ -1,7 +1,4 @@
-import {
-  FACEBOOK_LOGIN_SUCCESS,
-  FACEBOOK_LOGIN_FAIL
-} from '../actions/types';
+import { FACEBOOK_LOGIN_SUCCESS, FACEBOOK_LOGIN_FAIL } from '../actions/types';
 
 const INITIAL_STATE = {};
 

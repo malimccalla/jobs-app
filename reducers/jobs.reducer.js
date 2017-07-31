@@ -1,6 +1,4 @@
-import {
-  FETCH_JOBS
-} from '../actions/types';
+import { FETCH_JOBS } from '../actions/types';
 
 const INITIAL_STATE = {
   results: []

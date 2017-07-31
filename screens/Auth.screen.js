@@ -20,9 +20,7 @@ class AuthScreen extends Component {
   }
 
   render() {
-    return (
-      <View style={{ flex: 1, backgroundColor: '#0089ee' }} />
-    );
+    return <View style={{ flex: 1, backgroundColor: '#0089ee' }} />;
   }
 }
 

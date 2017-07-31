@@ -8,7 +8,7 @@ class ReviewScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Review Jobs',
     tabBarIcon: ({ tintColor }) => {
-      return <Icon name="favorite" size={24} color={tintColor} />
+      return <Icon name="favorite" size={24} color={tintColor} />;
     },
     headerStyle: {
       marginTop: Platform.OS === 'andriod' ? 24 : 0
@@ -21,21 +21,27 @@ class ReviewScreen extends Component {
         color="rgba(0, 122, 255, 1)"
       />
     )
-  })
+  });
 
   renderLikedJobs() {
-    return this.props.likedJobs.map((job) => {
+    return this.props.likedJobs.map(job => {
       const {
-        url, company, formattedRelativeTime, jobkey,
-        longitude, latitude, title, jobtitle
+        url,
+        company,
+        formattedRelativeTime,
+        jobkey,
+        longitude,
+        latitude,
+        title,
+        jobtitle
       } = job;
 
       const initialRegion = {
         longitude,
         latitude,
         longitudeDelta: 0.045,
-        latitudeDelta: 0.02,
-      }
+        latitudeDelta: 0.02
+      };
 
       return (
         <Card title={jobtitle} key={jobkey}>
@@ -48,8 +54,12 @@ class ReviewScreen extends Component {
               cacheEnabled
             />
             <View style={styles.detailWrapper}>
-              <Text style={styles.italics}>{company}</Text>
-              <Text style={styles.italics}>{formattedRelativeTime}</Text>
+              <Text style={styles.italics}>
+                {company}
+              </Text>
+              <Text style={styles.italics}>
+                {formattedRelativeTime}
+              </Text>
             </View>
             <Button
               title="Apply Now"
@@ -58,8 +68,8 @@ class ReviewScreen extends Component {
             />
           </View>
         </Card>
-      )
-    })
+      );
+    });
   }
 
   render() {
@@ -76,12 +86,12 @@ const styles = {
     flexDirection: 'row',
     marginBottom: 10,
     marginTop: 10,
-    justifyContent: 'space-around',
+    justifyContent: 'space-around'
   },
   italics: {
     fontStyle: 'italic'
   }
-}
+};
 
 const mapStateToProps = ({ likedJobs }) => {
   return { likedJobs };

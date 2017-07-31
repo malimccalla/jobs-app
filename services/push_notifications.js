@@ -11,7 +11,9 @@ export default async () => {
   if (previousToken) {
     return;
   } else {
-    let { status } = await Permissions.askAsync(Permissions.REMOTE_NOTIFICATIONS);
+    let { status } = await Permissions.askAsync(
+      Permissions.REMOTE_NOTIFICATIONS
+    );
 
     if (status !== 'granted') {
       return;
@@ -21,4 +23,4 @@ export default async () => {
     await axios.post(PUSH_ENDPOINT, { token: { token } });
     await AsyncStorage.setItem('push_token', token);
   }
-}
+};

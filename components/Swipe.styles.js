@@ -7,5 +7,5 @@ export default StyleSheet.create({
     position: 'absolute',
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT
-  },
+  }
 });

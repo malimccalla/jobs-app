@@ -11,9 +11,9 @@ class SettingsScreen extends Component {
       marginTop: Platform.OS === 'andriod' ? 24 : 0
     },
     tabBarIcon: ({ tintColor }) => {
-      return <Icon name="favorite" size={24} color={tintColor} />
-    },
-  })
+      return <Icon name="favorite" size={24} color={tintColor} />;
+    }
+  });
 
   render() {
     return (
@@ -29,6 +29,5 @@ class SettingsScreen extends Component {
     );
   }
 }
-
 
 export default connect(null, { clearLikedJobs })(SettingsScreen);

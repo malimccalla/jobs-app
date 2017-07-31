@@ -9,9 +9,9 @@ class MapScreen extends Component {
   static navigationOptions = () => ({
     title: 'Map',
     tabBarIcon: ({ tintColor }) => {
-      return <Icon name="my-location" size={24} color={tintColor} />
+      return <Icon name="my-location" size={24} color={tintColor} />;
     }
-  })
+  });
 
   state = {
     mapLoaded: false,
@@ -20,7 +20,7 @@ class MapScreen extends Component {
       latitude: 37,
       longitudeDelta: 0.04,
       latitudeDelta: 0.09
-    },
+    }
   };
 
   async componentWillMount() {
@@ -31,20 +31,20 @@ class MapScreen extends Component {
     this.setState({ mapLoaded: true });
   }
 
-  onRegionChangeComplete = (region) => {
+  onRegionChangeComplete = region => {
     this.setState({ region });
-  }
+  };
 
   onButtonPress = () => {
     this.props.fetchJobs(this.state.region, () => {
       this.props.navigation.navigate('deck');
     });
-  }
+  };
 
   render() {
     if (!this.state.mapLoaded) {
       return (
-        <View style={{ flex: 1, justifyContent: 'center'}}>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
           <ActivityIndicator size="large" />
         </View>
       );
@@ -57,8 +57,7 @@ class MapScreen extends Component {
           region={this.state.region}
           onRegionChangeComplete={this.onRegionChangeComplete}
           provider={MapView.PROVIDER_GOOGLE}
-        >
-        </MapView>
+        />
         <View style={styles.buttonContainer}>
           <Button
             title="Search"
@@ -80,18 +79,18 @@ const styles = {
     position: 'absolute',
     bottom: 25,
     left: 0,
-    right: 0,
+    right: 0
   },
   buttonStyle: {
     backgroundColor: '#0089ee',
-    borderRadius: 5,
+    borderRadius: 5
   },
   buttonTextStyle: {
     color: '#fff',
     fontFamily: 'Avenir Next',
     fontWeight: '600',
-    fontSize: 18,
+    fontSize: 18
   }
-}
+};
 
 export default connect(null, actions)(MapScreen);

@@ -23,7 +23,7 @@ class Swipe extends Component {
     onSwipeLeft: () => console.log('onSwipeLeft has not been set'),
     renderNoMoreCards: () => console.log('renderNoMoreCards has not been set'),
     keyProp: 'id'
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -32,13 +32,13 @@ class Swipe extends Component {
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (event, grestureState) => true,
       onPanResponderMove: (event, gestureState) => {
-        this.position.setValue({ x: gestureState.dx , y: gestureState.dy });
+        this.position.setValue({ x: gestureState.dx, y: gestureState.dy });
       },
       onPanResponderRelease: (event, gestureState) => {
         const isTooSlow = Math.abs(gestureState.vx) < 0.3;
-        if ((gestureState.dx > SWIPE_THRESHOLD) && !isTooSlow) {
+        if (gestureState.dx > SWIPE_THRESHOLD && !isTooSlow) {
           this.forceSwipe(RIGHT);
-        } else if ((gestureState.dx < -SWIPE_THRESHOLD) && !isTooSlow) {
+        } else if (gestureState.dx < -SWIPE_THRESHOLD && !isTooSlow) {
           this.forceSwipe(LEFT);
         } else {
           this.resetPosition();
@@ -56,7 +56,8 @@ class Swipe extends Component {
   }
 
   componentWillUpdate() {
-    UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+    UIManager.setLayoutAnimationEnabledExperimental &&
+      UIManager.setLayoutAnimationEnabledExperimental(true);
     LayoutAnimation.spring();
   }
 
@@ -64,11 +65,11 @@ class Swipe extends Component {
     const x = direction === RIGHT ? SCREEN_WIDTH : -SCREEN_WIDTH;
 
     Animated.timing(this.position, {
-      toValue: { x , y: -300 },
+      toValue: { x, y: -300 },
       duration: SWIPE_OUT_DURATION
     }).start(() => {
       this.onSwipeComplete(direction);
-    })
+    });
   }
 
   onSwipeComplete(direction) {
@@ -83,7 +84,7 @@ class Swipe extends Component {
 
   resetPosition() {
     Animated.spring(this.position, {
-      toValue: { x: 0, y: 0}
+      toValue: { x: 0, y: 0 }
     }).start();
   }
 
@@ -102,7 +103,7 @@ class Swipe extends Component {
     return {
       ...position.getLayout(),
       transform: [{ rotate }, { scale }]
-    }
+    };
   }
 
   renderCards() {
@@ -124,17 +125,20 @@ class Swipe extends Component {
           >
             {this.props.renderCard(item)}
           </Animated.View>
-        )
+        );
       }
 
       return (
         <Animated.View
           key={item[this.props.keyProp]}
-          style={[styles.cardStyle, { top: 10 * (i - this.state.index), zIndex: -i }]}
+          style={[
+            styles.cardStyle,
+            { top: 10 * (i - this.state.index), zIndex: -i }
+          ]}
         >
           {this.props.renderCard(item)}
         </Animated.View>
-      )
+      );
     });
 
     return Platform.OS === 'andriod' ? deck : deck.reverse();

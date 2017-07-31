@@ -20,48 +20,49 @@ export default class App extends React.Component {
     registerForNotifications();
     askForContacts();
 
-    Notifications.addListener((notification) => {
+    Notifications.addListener(notification => {
       const { data: { text }, origin } = notification;
       // const text = notification.data.text
       if (origin === 'received' && text) {
-        Alert.alert(
-          'New Push from mali',
-          text,
-          [{ text: 'OK'}]
-        )
+        Alert.alert('New Push from mali', text, [{ text: 'OK' }]);
       }
-
-    })
+    });
   }
 
   render() {
-    const MainNavigator = TabNavigator({
-      welcome: { screen: WelcomeScreen },
-      auth: { screen: AuthScreen },
-      main: {
-        screen: TabNavigator({
-          map: { screen: MapScreen },
-          deck: { screen: DeckScreen },
-          review: {
-            screen: StackNavigator({
-              review: { screen: ReviewScreen },
-              settings: { screen: SettingsScreen }
-            })
-          }
-        }, {
-          tabBarPosition: 'bottom',
-          swipeEnabled: true,
-          tabBarOptions: {
-            labelStyle: { fontSize: 12 }
-          }
-        })
+    const MainNavigator = TabNavigator(
+      {
+        welcome: { screen: WelcomeScreen },
+        auth: { screen: AuthScreen },
+        main: {
+          screen: TabNavigator(
+            {
+              map: { screen: MapScreen },
+              deck: { screen: DeckScreen },
+              review: {
+                screen: StackNavigator({
+                  review: { screen: ReviewScreen },
+                  settings: { screen: SettingsScreen }
+                })
+              }
+            },
+            {
+              tabBarPosition: 'bottom',
+              swipeEnabled: true,
+              tabBarOptions: {
+                labelStyle: { fontSize: 12 }
+              }
+            }
+          )
+        }
+      },
+      {
+        lazy: true,
+        navigationOptions: {
+          tabBarVisible: false
+        }
       }
-    }, {
-      lazy: true,
-      navigationOptions: {
-        tabBarVisible: false
-      }
-    });
+    );
 
     return (
       <Provider store={store}>
@@ -76,6 +77,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  },
+    backgroundColor: '#fff'
+  }
 });

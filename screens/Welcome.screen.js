@@ -7,7 +7,7 @@ import Slides from '../components/Slides';
 const SLIDE_DATA = [
   { slideIndex: 0, text: 'Welcome to Shuttle' },
   { slideIndex: 1, text: 'Set your location, then swipe away!' },
-  { slideIndex: 2, text: 'Swipe mcSwipe face' },
+  { slideIndex: 2, text: 'Swipe mcSwipe face' }
 ];
 
 class WelcomeScreen extends Component {
@@ -25,19 +25,14 @@ class WelcomeScreen extends Component {
 
   onSlidesComplete = () => {
     this.props.navigation.navigate('auth');
-  }
+  };
 
   render() {
     if (_.isNull(this.state.token)) {
-      return <AppLoading />
+      return <AppLoading />;
     }
 
-    return (
-      <Slides
-        data={SLIDE_DATA}
-        onComplete={this.onSlidesComplete}
-      />
-    );
+    return <Slides data={SLIDE_DATA} onComplete={this.onSlidesComplete} />;
   }
 }
 

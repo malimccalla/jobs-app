@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Dimensions, TouchableHighlight } from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  Dimensions,
+  TouchableHighlight
+} from 'react-native';
 import { Button } from 'react-native-elements';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -8,15 +14,14 @@ class Slides extends Component {
   renderSlides() {
     return this.props.data.map((slide, index) => {
       return (
-        <View
-          style={styles.slideStyle}
-          key={slide.text}
-        >
-          <Text style={styles.textStyle}>{slide.text}</Text>
+        <View style={styles.slideStyle} key={slide.text}>
+          <Text style={styles.textStyle}>
+            {slide.text}
+          </Text>
           {this.renderLastSlide(index)}
         </View>
       );
-    })
+    });
   }
 
   renderLastSlide(index) {
@@ -31,7 +36,7 @@ class Slides extends Component {
           textStyle={styles.buttonTextStyles}
           onPress={this.props.onComplete}
         />
-      )
+      );
     }
   }
 
@@ -39,7 +44,8 @@ class Slides extends Component {
     return (
       <View style={styles.pageIndicatorStyles}>
         {this.props.data.map((data, index) => {
-          const backgroundColor = data.slideIndex === index ? '#ffffff' : '#e4e4e4';
+          const backgroundColor =
+            data.slideIndex === index ? '#ffffff' : '#e4e4e4';
           return (
             <View
               key={data.text}
@@ -48,23 +54,25 @@ class Slides extends Component {
           );
         })}
       </View>
-    )
+    );
   }
 
   render() {
     return (
       <View style={styles.containerStyles}>
         <ScrollView
-          ref={(e) => { this.scrollView = e; }}
+          ref={e => {
+            this.scrollView = e;
+          }}
           scrollEnabled
           horizontal
           style={{ flex: 1 }}
           pagingEnabled
           showsHorizontalScrollIndicator={false}
-          >
-            {this.renderSlides()}
-          </ScrollView>
-          {this.renderPageIndicators()}
+        >
+          {this.renderSlides()}
+        </ScrollView>
+        {this.renderPageIndicators()}
       </View>
     );
   }
@@ -95,7 +103,7 @@ const styles = {
     justifyContent: 'center',
     flexDirection: 'row',
     position: 'absolute',
-    bottom: 50,
+    bottom: 50
   },
   singleIndicatorStyles: {
     height: 14,
@@ -103,7 +111,7 @@ const styles = {
     borderRadius: 500,
     margin: 4,
     justifyContent: 'space-around',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   buttonStyles: {
     backgroundColor: '#ffffff',
@@ -114,6 +122,6 @@ const styles = {
   buttonTextStyles: {
     color: '#0089ee'
   }
-}
+};
 
 export default Slides;
