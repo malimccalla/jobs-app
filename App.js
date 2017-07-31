@@ -1,11 +1,12 @@
 import React from 'react';
-import { Notifications } from 'expo';
+import { Notifications, Permissions } from 'expo';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { StyleSheet, Text, View, StatusBar, Alert } from 'react-native';
 import { Provider } from 'react-redux';
 
 import store from './store';
 import registerForNotifications from './services/push_notifications';
+import askForContacts from './services/contacts';
 
 import AuthScreen from './screens/Auth.screen';
 import WelcomeScreen from './screens/Welcome.screen';
@@ -17,6 +18,7 @@ import SettingsScreen from './screens/Settings.screen.js';
 export default class App extends React.Component {
   componentDidMount() {
     registerForNotifications();
+    askForContacts();
 
     Notifications.addListener((notification) => {
       const { data: { text }, origin } = notification;
